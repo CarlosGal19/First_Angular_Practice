@@ -1,0 +1,14 @@
+button {
+  border-radius: 8px;
+  margin-left: 4px;
+  background-color: #222222;
+  color: #fff;
+  padding: 4px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+label {
+  font-size:x-large;
+  font-weight: bolder;
+}
