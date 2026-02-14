@@ -1,4 +1,4 @@
-import { Component, signal } from "@angular/core";
+import { Component, computed, signal } from "@angular/core";
 
 @Component({
   templateUrl: './hero-page.html'
@@ -6,6 +6,10 @@ import { Component, signal } from "@angular/core";
 export class HeroPage {
   protected name = signal('Ironman');
   protected age = signal(45);
+
+  protected heroDescription = computed(() => `${ this.name() } - ${ this.age() }`)
+
+  protected capitalizedName = computed(() => this.name().toLocaleUpperCase())
 
   getHeroDescription = () => `${ this.name() } - ${ this.age() }`;
 
