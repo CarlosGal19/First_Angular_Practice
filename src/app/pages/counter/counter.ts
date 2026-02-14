@@ -12,6 +12,6 @@ export class Counter {
   }
 
   resetCounter = () => {
-    this.number.update(() => 0)
+    this.number.set(0)
   }
 }
