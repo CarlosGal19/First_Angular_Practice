@@ -5,17 +5,9 @@
   <div class="col-12 col-sm-6">
     <h3>Agregar</h3>
 
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Nombre"
-    />
+    <input type="text" class="form-control" placeholder="Nombre" />
 
-    <input
-      type="number"
-      class="form-control mt-2"
-      placeholder="Poder"
-    />
+    <input type="number" class="form-control mt-2" placeholder="Poder" />
 
     <button class="mt-2 btn btn-primary">
       Agregar
@@ -23,20 +15,20 @@
   </div>
 
   <div class="col-12 col-sm-6">
-    <h3>Listado fuertes</h3>
+    <h3>Listado</h3>
     <ul>
+      @if(characters().length > 0) {
+      @for (character of characters(); track character.id; let idx = $index) {
+
       <li>
-        Goku
-      </li>
-      <li>
-        Goku
-      </li>
-      <li>
-        Goku
-      </li>
-      <li>
-        Goku
-      </li>
+        <span>{{ idx + 1 }} - {{ character.name }}</span>
+        <strong [class.text-danger]="character.power > 9000" [class.text-primary]="character.power < 9000">
+          <!-- [ngClass]="powerClasses()" -->
+          ({{ character.power }})</strong>
+      </li> }
+      } @else {
+      <p> No hay we </p>
+      }
     </ul>
   </div>
 </section>
