@@ -38,5 +38,12 @@ export class DragonballPage {
     this.characters.update((current) => [...current, { id, name: newName, power: newPower, }]);
 
     localStorage.setItem('characters', JSON.stringify(this.characters()))
+
+    this.resetFields()
+  }
+
+  protected resetFields = () => {
+    this.name.set('');
+    this.power.set(0);
   }
 }
