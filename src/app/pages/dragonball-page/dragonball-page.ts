@@ -6,34 +6,18 @@ interface ICharacter {
   power: number;
 }
 
+interface INewCharacter {
+  name: string;
+  power: number;
+}
+
 @Component({
   selector: 'app-dragonball-page',
   imports: [],
   templateUrl: './dragonball-page.html',
 })
 export class DragonballPage {
-  protected characters: WritableSignal<ICharacter[]> = signal([
-    {
-      id: 1,
-      name: 'Goku',
-      power: 9500,
-    },
-    {
-      id: 2,
-      name: 'Vegeta',
-      power: 9000,
-    },
-    {
-      id: 3,
-      name: 'Gohan',
-      power: 8700,
-    },
-    {
-      id: 4,
-      name: 'Piccolo',
-      power: 8200,
-    }
-  ])
+  protected characters: WritableSignal<ICharacter[]> = signal(JSON.parse(localStorage.getItem('characters') || '[]') as ICharacter[])
 
   // protected powerClasses = computed(() => {
   //   return {
@@ -41,4 +25,18 @@ export class DragonballPage {
   //     'text-primary': true,
   //   };
   // })
+
+  protected name = signal('');
+  protected power = signal<number>(0);
+
+  protected addCharacter = () => {
+    const id = Date.now();
+
+    const newName = this.name();
+    const newPower = this.power();
+
+    this.characters.update((current) => [...current, { id, name: newName, power: newPower, }]);
+
+    localStorage.setItem('characters', JSON.stringify(this.characters()))
+  }
 }

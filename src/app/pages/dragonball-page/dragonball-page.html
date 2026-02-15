@@ -3,13 +3,27 @@
 
 <section class="row">
   <div class="col-12 col-sm-6">
-    <h3>Agregar</h3>
+    <h3>Agregar: {{ name() }}</h3>
 
-    <input type="text" class="form-control" placeholder="Nombre" />
+    <input
+      type="text"
+      [value]="name()"
+      (input)="name.set(txtName.value)"
+      class="form-control"
+      placeholder="Nombre"
+      #txtName
+    />
 
-    <input type="number" class="form-control mt-2" placeholder="Poder" />
+    <input
+      type="number"
+      class="form-control mt-2"
+      placeholder="Poder"
+      [value]="power()"
+      (input)="power.set(+numPower.value)"
+      #numPower
+    />
 
-    <button class="mt-2 btn btn-primary">
+    <button (click)="addCharacter()" class="mt-2 btn btn-primary">
       Agregar
     </button>
   </div>
