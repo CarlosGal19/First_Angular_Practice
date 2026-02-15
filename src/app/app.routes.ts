@@ -4,7 +4,7 @@ import { HeroPage } from './pages/hero/hero-page';
 
 export const routes: Routes = [
   {
-    path: 'counter',
+    path: '',
     component: Counter
   },
   {
