@@ -17,5 +17,5 @@ a {
 
 a.active {
   color: red;
-  text-decoration: underline;
+  text-decoration: none;
 }
