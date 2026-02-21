@@ -1,7 +1,7 @@
-import { Component, computed, signal, WritableSignal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CharacterList } from "../../components/dragonball/character-list/character-list";
-import { ICharacter } from '../../interfaces/character.interface';
 import { DragonballCharacterAdd } from "../../components/dragonball/dragonball-character-add/dragonball-character-add";
+import { DragonballService } from '../../services/dragonball-service';
 
 @Component({
   selector: 'app-dragonball-super-page',
@@ -9,14 +9,8 @@ import { DragonballCharacterAdd } from "../../components/dragonball/dragonball-c
   templateUrl: './dragonball-super-page.html',
 })
 export class DragonballSuperPage {
-  protected characters: WritableSignal<ICharacter[]> = signal([{
-    id: 1,
-    name: 'Goku',
-    power: 9001
-  }])
+  // constructor(public dragonBallService: DragonballService) {}
 
-  addCharacter = (newCharacter: ICharacter) => {
-    const { id, name, power } = newCharacter;
-    this.characters.update((current) => [...current, { id, name, power }]);
-  }
+  public dragonBallService = inject(DragonballService);
+
 }
