@@ -1,18 +1,18 @@
 import { Component, computed, signal, WritableSignal } from '@angular/core';
-
-interface ICharacter {
-  id: number;
-  name: string;
-  power: number;
-}
+import { CharacterList } from "../../components/dragonball/character-list/character-list";
+import { ICharacter } from '../../interfaces/character.interface';
 
 @Component({
   selector: 'app-dragonball-super-page',
-  imports: [],
+  imports: [CharacterList],
   templateUrl: './dragonball-super-page.html',
 })
 export class DragonballSuperPage {
-  protected characters: WritableSignal<ICharacter[]> = signal([] as ICharacter[])
+  protected characters: WritableSignal<ICharacter[]> = signal([{
+    id: 1,
+    name: 'Goku',
+    power: 9001
+  }])
 
   protected name = signal('');
   protected power = signal<number>(0);
