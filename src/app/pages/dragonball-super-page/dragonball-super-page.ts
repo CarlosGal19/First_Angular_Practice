@@ -1,10 +1,11 @@
 import { Component, computed, signal, WritableSignal } from '@angular/core';
 import { CharacterList } from "../../components/dragonball/character-list/character-list";
 import { ICharacter } from '../../interfaces/character.interface';
+import { DragonballCharacterAdd } from "../../components/dragonball/dragonball-character-add/dragonball-character-add";
 
 @Component({
   selector: 'app-dragonball-super-page',
-  imports: [CharacterList],
+  imports: [CharacterList, DragonballCharacterAdd],
   templateUrl: './dragonball-super-page.html',
 })
 export class DragonballSuperPage {
@@ -14,22 +15,8 @@ export class DragonballSuperPage {
     power: 9001
   }])
 
-  protected name = signal('');
-  protected power = signal<number>(0);
-
-  protected addCharacter = () => {
-    const id = Date.now();
-
-    const newName = this.name();
-    const newPower = this.power();
-
-    this.characters.update((current) => [...current, { id, name: newName, power: newPower, }]);
-
-    this.resetFields()
-  }
-
-  protected resetFields = () => {
-    this.name.set('');
-    this.power.set(0);
+  addCharacter = (newCharacter: ICharacter) => {
+    const { id, name, power } = newCharacter;
+    this.characters.update((current) => [...current, { id, name, power }]);
   }
 }
