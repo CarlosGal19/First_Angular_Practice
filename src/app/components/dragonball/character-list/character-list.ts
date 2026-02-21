@@ -7,5 +7,7 @@ import { ICharacter } from '../../../interfaces/character.interface';
   templateUrl: './character-list.html',
 })
 export class CharacterList {
-  characters: InputSignal<ICharacter[]> =  input.required()
+  characters: InputSignal<ICharacter[]> = input.required();
+
+  listName: InputSignal<string> = input.required();
 }
